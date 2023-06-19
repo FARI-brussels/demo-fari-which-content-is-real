@@ -4,7 +4,7 @@
   width: 573.86px;
   height: 500.99px;
   left: 288.66px;
-  top: 272.32px;
+  top: 172.32px;
   /* Success */
   border: 4px solid #4BBB2F;
   border-radius: 21.2352px;
@@ -19,7 +19,7 @@
   width: 395px;
   height: 21px;
   left: 68.97px;
-  top: 153.98px;
+  top: 53.98px;
   /* regular */
   font-family: 'Plain';
   font-style: normal;
@@ -31,10 +31,10 @@
 }
 .scoreText{
   position: absolute;
-  width: 83px;
+  width: 300px;
   height: 21px;
   left: 1200.65px;
-  top: 966.57px;
+  top: 866.57px;
 
   /* regular */
 
@@ -81,7 +81,7 @@ position: absolute;
 width: 500px;
 height: 32px;
 left: 69px;
-top: 111.73px;
+top: 11.73px;
 
 /* Title */
 
@@ -101,7 +101,7 @@ color: #181715;
 width: 396.07px;
 height: 51.31px;
 left: 1457.72px;
-top: 951.92px;
+top: 851.92px;
 background: #2F4FBB;
 border-radius: 38.56px;
 /* regular */
