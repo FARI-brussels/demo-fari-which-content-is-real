@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'farifont';
+  src: url('/fints/Plain-Black.otf') format('otf'),
+}
+
+body {
+  font-family: 'farifont', sans-serif;
+}
+
 .media-container {
   box-sizing: border-box;
   position: absolute;
@@ -16,15 +25,13 @@
 
 .description{
   position: absolute;
-  width: 395px;
   height: 21px;
   left: 68.97px;
   top: 53.98px;
   /* regular */
-  font-family: 'Plain';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 21px;
   /* Dark */
   color: #181715;
@@ -38,10 +45,8 @@
 
   /* regular */
 
-  font-family: 'Plain';
-  font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 21px;
 
   /* Dark */
@@ -50,16 +55,11 @@
 }
 
 .infoText{
-  position: absolute;
-  left: 1000.65px;
-  top: 800.57px;
-
+  text-align: center;
+  margin-top: 780px; 
   /* regular */
-
-  font-family: 'Plain';
-  font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 21px;
 
   /* Dark */
@@ -78,17 +78,14 @@ img{
 
 .title{
 position: absolute;
-width: 500px;
+width: 1000px;
 height: 32px;
 left: 69px;
 top: 11.73px;
 
 /* Title */
-
-font-family: 'Plain';
-font-style: normal;
 font-weight: 600;
-font-size: 24px;
+font-size: 28px;
 line-height: 32px;
 /* identical to box height */
 /* Dark */
@@ -106,10 +103,8 @@ background: #2F4FBB;
 border-radius: 38.56px;
 /* regular */
 
-font-family: 'Plain';
-font-style: normal;
 font-weight: 400;
-font-size: 16px;
+font-size: 20px;
 line-height: 21px;
 
 /* White */
@@ -120,4 +115,58 @@ color: #FFFFFF;
 
 .next[disabled] {
   background: grey; /* Change the color when disabled*/
+}
+
+
+.playAgainButton{
+  position: absolute;
+  width: 396.07px;
+  height: 51.31px;
+  left: calc(50% - 396.07px/2 + 0px);
+  top: 671.97px;
+
+  background: #2F4FBB;
+  border-radius: 38.56px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 21px;
+
+  /* White */
+
+  color: #FFFFFF;
+
+}
+
+.finishText{
+  text-align: center;
+  margin-top: 400px; 
+  height: 32px;
+  left: calc(50% - 257px/2);
+  top: calc(50% - 32px/2 - 219.99px);
+
+/* Title */
+
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 32px;
+  /* identical to box height */
+
+
+  /* Dark */
+  color: #181715;
+}
+
+.finalScore{
+  text-align: center;
+height: 64px;
+margin-top: 100px; 
+font-weight: 600;
+font-size: 48px;
+line-height: 64px;
+/* identical to box height */
+
+
+/* Web brand blue */
+
+color: #2F4FBB;
 }
