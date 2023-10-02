@@ -86,12 +86,42 @@ document.addEventListener('DOMContentLoaded', async function() {
 
   function setMediaElement(element, source, isVideo, info, isCorrect) {
     if (isVideo) {
-      element.innerHTML = `<video width=data-info="${info}" controls><source src="${source}" type="video/mp4"></video>`;
+        element.innerHTML = 
+        `<div class="video-wrapper">
+        <video id="myVideo" data-info="${info}" controls>
+        <source src="${source}" type="video/mp4">
+        </video>
+        <div class="play-btn" id="playBtn">&#9658;</div>
+        </div>`;
+        const video = document.getElementById('myVideo');
+        const playBtn = document.getElementById('playBtn');
+
+        // Only prevent the event from bubbling up for the playBtn, not the video
+        playBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (video.paused) {
+                video.play();
+                playBtn.style.display = 'none';
+            } else {
+                video.pause();
+                playBtn.style.display = 'block';
+            }
+        });
+
+        video.addEventListener('pause', function() {
+            playBtn.style.display = 'block';
+        });
+
+        video.addEventListener('play', function() {
+            playBtn.style.display = 'none';
+        });
+
     } else {
-      element.innerHTML = `<img data-info="${info}" src="${source}">`;
+        element.innerHTML = `<img data-info="${info}" src="${source}">`;
     }
     element.dataset.correct = isCorrect;
-  }
+}
+
   
   function handleClick(element) {
     nextButton.disabled = false;
@@ -109,23 +139,29 @@ document.addEventListener('DOMContentLoaded', async function() {
     scoreText.innerHTML = `${translations[currentLanguage].scoreText}<span id='score' style='color: #2F4FBB;'>${score}</span>/10`;
 }
 
+
   async function getMedia(mediaUrl, mediaAmount) {
     // Get all media from API
-    const resp = await fetch(`${mediaUrl}?populate=*`).then(response => response.json());
-    const data = resp['data'];
+    const data = await fetch(`${mediaUrl}?populate=*`).then(response => response.json());
+    shuffle(data.data);
+    // Initialize empty arrays to collect the content
+    const realUrls = [];
+    const realCaptions = [];
+    const fakeUrls = [];
+    const fakeCaptions = [];
 
-    // Get media with attribute is_real equal to true
-    let realMedia = data.filter(item => item.attributes.is_real).map(item => item.attributes.media.data);
-    let flattenedRealMedia = shuffleArray([].concat(...realMedia));
-    let realUrls = flattenedRealMedia.map(item => baseUrl + item.attributes.url).slice(0, mediaAmount);
-    let realCaptions = flattenedRealMedia.map(item => item.attributes.caption).slice(0, mediaAmount);
+    // We only loop up to mediaAmount or the length of the data, whichever is smaller
+    const length = Math.min(mediaAmount, data.data.length);
 
-    // Get media with attribute is_real equal to false
-    let fakeMedia = data.filter(item => !item.attributes.is_real).map(item => item.attributes.media.data);
-    let flattenedFakeMedia = shuffleArray([].concat(...fakeMedia));
-    let fakeUrls = flattenedFakeMedia.map(item => baseUrl + item.attributes.url).slice(0, mediaAmount);
-    let fakeCaptions = flattenedFakeMedia.map(item => item.attributes.caption).slice(0, mediaAmount);
+    for (let i = 0; i < length; i++) {
+        let item = data.data[i];
+        realUrls.push(baseUrl + item.attributes.realContent.data.attributes.url);
+        realCaptions.push(item.attributes.realContent.data.attributes.caption || "");
 
+        fakeUrls.push(baseUrl + item.attributes.fakeContent.data.attributes.url);
+        fakeCaptions.push(item.attributes.fakeContent.data.attributes.caption || "");
+    }
+    
     return {
         realContentUrls: realUrls,
         realContentCaptions: realCaptions,
@@ -134,7 +170,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     };
 }
 
-  function shuffleArray(array) {
+  function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]]; // Swap elements
@@ -146,6 +182,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     location.reload();
   }
 });
+
 
 let translations = {
   en: {
