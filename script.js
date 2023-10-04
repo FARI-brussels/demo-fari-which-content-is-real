@@ -87,35 +87,9 @@ document.addEventListener('DOMContentLoaded', async function() {
   function setMediaElement(element, source, isVideo, info, isCorrect) {
     if (isVideo) {
         element.innerHTML = 
-        `<div class="video-wrapper">
-        <video id="myVideo" data-info="${info}" controls>
+        `<video id="myVideo" data-info="${info}" controls autoplay>
         <source src="${source}" type="video/mp4">
-        </video>
-        <div class="play-btn" id="playBtn">&#9658;</div>
-        </div>`;
-        const video = document.getElementById('myVideo');
-        const playBtn = document.getElementById('playBtn');
-
-        // Only prevent the event from bubbling up for the playBtn, not the video
-        playBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            if (video.paused) {
-                video.play();
-                playBtn.style.display = 'none';
-            } else {
-                video.pause();
-                playBtn.style.display = 'block';
-            }
-        });
-
-        video.addEventListener('pause', function() {
-            playBtn.style.display = 'block';
-        });
-
-        video.addEventListener('play', function() {
-            playBtn.style.display = 'none';
-        });
-
+        </video>`;
     } else {
         element.innerHTML = `<img data-info="${info}" src="${source}">`;
     }
