@@ -31,12 +31,28 @@ document.addEventListener('DOMContentLoaded', async function() {
         ongoingRound = false;  // Set ongoingRound to false after a choice is made
       }
     });
+  //for touchscreens
+  media1.addEventListener('touchend', function(event){
+    event.preventDefault();
+    if (ongoingRound) {
+      handleClick(this);
+      ongoingRound = false;  // Set ongoingRound to false after a choice is made
+    }
+  });
   media2.addEventListener('click', function() {
       if (ongoingRound) {
         handleClick(this);
         ongoingRound = false;  // Set ongoingRound to false after a choice is made
       }
     });
+  //for touchscreens
+  media2.addEventListener('touchend', function(event){
+    event.preventDefault();
+    if (ongoingRound) {
+      handleClick(this);
+      ongoingRound = false;  // Set ongoingRound to false after a choice is made
+    }
+  });
 
   title.textContent = translations[currentLanguage].appTitle
   description.textContent = translations[currentLanguage].description
