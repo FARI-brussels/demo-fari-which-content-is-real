@@ -76,6 +76,16 @@ img{
   object-fit: cover;
 }
 
+video{
+  width: 564.86px;
+  height: 492.99px;
+  left: 288.66px;
+  top: 272.32px;
+  border-radius: 15.2352px;
+  object-fit: cover;
+}
+
+
 .title{
 position: absolute;
 width: 1000px;
@@ -168,32 +178,3 @@ color: #FFFFFF;
   color: #2F4FBB;
 }
 
-
-.video-wrapper {
-  position: relative;
-  width: 640px;
-  height: 360px;
-  overflow: hidden;
-}
-
-.play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 4em; /* adjust as needed */
-  color: white;
-  cursor: pointer;
-  z-index: 1;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-}
-
-.play-btn:hover {
-  opacity: 1;
-}
-
-.video-wrapper video {
-  width: 100%;
-  height: 100%;
-}
