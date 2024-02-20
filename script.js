@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   function setMediaElement(element, source, isVideo, info, isCorrect) {
     if (isVideo) {
         element.innerHTML = 
-        `<video id="myVideo" data-info="${info}" controls autoplay>
+        `<video id="myVideo" data-info="${info}" controls autoplay loop>
         <source src="${source}" type="video/mp4">
         </video>`;
     } else {

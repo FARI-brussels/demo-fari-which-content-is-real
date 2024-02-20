@@ -158,17 +158,14 @@ color: #FFFFFF;
 
 .finalScore{
   text-align: center;
-height: 64px;
-margin-top: 100px; 
-font-weight: 600;
-font-size: 48px;
-line-height: 64px;
-/* identical to box height */
-
-
-/* Web brand blue */
-
-color: #2F4FBB;
+  height: 64px;
+  margin-top: 100px; 
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 64px;
+  /* identical to box height */
+  /* Web brand blue */
+  color: #2F4FBB;
 }
 
 
